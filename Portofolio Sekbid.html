@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Creative Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #667eea;
+        }
+        
+        .nav-link.active {
+            color: #667eea;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .skill-bar {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 8px;
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-black text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold gradient-text">Portofolio</div>
+                <div class="hidden md:flex space-x-6 lg:space-x-8">
+                    <a href="#" class="nav-link active text-sm lg:text-base" onclick="showPage('home')">Beranda</a>
+                    <a href="#" class="nav-link text-sm lg:text-base" onclick="showPage('about')">Tentang</a>
+                    <a href="#" class="nav-link text-sm lg:text-base" onclick="showPage('skills')">Keahlian</a>
+                    <a href="#" class="nav-link text-sm lg:text-base" onclick="showPage('portfolio')">Portofolio</a>
+                    <a href="#" class="nav-link text-sm lg:text-base" onclick="showPage('services')">Layanan</a>
+                    <a href="#" class="nav-link text-sm lg:text-base" onclick="showPage('experience')">Pengalaman</a>
+                    <a href="#" class="nav-link text-sm lg:text-base" onclick="showPage('contact')">Kontak</a>
+                </div>
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-black/95 border-t border-gray-800">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#" class="block py-2 nav-link" onclick="showPage('home'); toggleMobileMenu()">Beranda</a>
+                <a href="#" class="block py-2 nav-link" onclick="showPage('about'); toggleMobileMenu()">Tentang</a>
+                <a href="#" class="block py-2 nav-link" onclick="showPage('skills'); toggleMobileMenu()">Keahlian</a>
+                <a href="#" class="block py-2 nav-link" onclick="showPage('portfolio'); toggleMobileMenu()">Portofolio</a>
+                <a href="#" class="block py-2 nav-link" onclick="showPage('services'); toggleMobileMenu()">Layanan</a>
+                <a href="#" class="block py-2 nav-link" onclick="showPage('experience'); toggleMobileMenu()">Pengalaman</a>
+                <a href="#" class="block py-2 nav-link" onclick="showPage('contact'); toggleMobileMenu()">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Home Page -->
+        <div id="home" class="page">
+            <section class="min-h-screen flex items-center justify-center px-4">
+                <div class="text-center max-w-4xl mx-auto">
+                    <div class="fade-in">
+                        <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                            Creative <span class="gradient-text">Designer</span>
+                        </h1>
+                        <p class="text-xl md:text-2xl text-gray-300 mb-8">
+                            Desainer Web • Editor Video • Operator Multimedia
+                        </p>
+                        <p class="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
+                            Menciptakan pengalaman digital yang memukau dengan desain yang inovatif dan storytelling visual yang kuat
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button onclick="showPage('portfolio')" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                                Lihat Portofolio
+                            </button>
+                            <button onclick="showPage('contact')" class="border border-gray-600 hover:border-blue-500 px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-blue-500/10">
+                                Hubungi Saya
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page hidden">
+            <section class="min-h-screen py-20 px-4">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Tentang Aku</h2>
+                        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                            Profesional kreatif yang berpengalaman dalam menciptakan solusi visual yang berdampak
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-12">
+                        <div class="max-w-4xl mx-auto text-center">
+                            <h3 class="text-3xl font-semibold mb-6">Halo, Saya Alvino Clemence Nugroho</h3>
+                            <p class="text-gray-300 leading-relaxed text-lg mb-6">
+                                Dengan passion yang mendalam dalam dunia desain, multimedia, dan juga video, saya telah mengembangkan keahlian dalam berbagai aspek industri kreatif. Dari desain web yang simple tapi tetap elegant hingga video editing yang sinematik ataupun video dokumenter, saya selalu berusaha memberikan hasil terbaik.
+                            </p>
+                            <p class="text-gray-300 leading-relaxed text-lg mb-8">
+                                Setiap proyek adalah kesempatan untuk bercerita melalui visual. Saya percaya bahwa desain yang baik tidak hanya indah dipandang, tetapi juga fungsional dan memberikan pengalaman yang berkesan bagi client saya.
+                            </p>
+                            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                                <span class="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm">Pemikiran Kreatif</span>
+                                <span class="bg-purple-500/20 text-purple-300 px-4 py-2 rounded-full text-sm">Pemecahan Masalah</span>
+                                <span class="bg-green-500/20 text-green-300 px-4 py-2 rounded-full text-sm">Kolaborasi Tim</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 max-w-2xl mx-auto">
+                            <h4 class="text-xl font-semibold mb-6 text-center">Fakta Singkat</h4>
+                            <div class="space-y-4">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Lokasi</span>
+                                    <span>Kab. Mojokerto, Indonesia</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Pengalaman</span>
+                                    <span>5+ Tahun</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Proyek Selesai</span>
+                                    <span>70+</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Klien Puas</span>
+                                    <span>85%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Skills Page -->
+        <div id="skills" class="page hidden">
+            <section class="min-h-screen py-20 px-4">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Keahlian</h2>
+                        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                            Menguasai berbagai software dan teknologi untuk menciptakan solusi kreatif yang inovatif dan efektif
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-8 mb-12">
+                        <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 card-hover">
+                            <div class="text-4xl mb-4">🎨</div>
+                            <h3 class="text-xl font-semibold mb-4">Desain Web</h3>
+                            <p class="text-gray-300 mb-6">Menciptakan desain web yang modern, responsif, dan user-friendly dengan fokus pada UX/UI yang optimal dan juga seimbang.</p>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">Figma</span>
+                                        <span class="text-sm">74%</span>
+                                    </div>
+                                    <div class="bg-gray-700 rounded-full h-2">
+                                        <div class="skill-bar" style="width: 74%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">Website Maker</span>
+                                        <span class="text-sm">90%</span>
+                                    </div>
+                                    <div class="bg-gray-700 rounded-full h-2">
+                                        <div class="skill-bar" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">HTML/CSS</span>
+                                        <span class="text-sm">54%</span>
+                                    </div>
+                                    <div class="bg-gray-700 rounded-full h-2">
+                                        <div class="skill-bar" style="width: 54%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 card-hover">
+                            <div class="text-4xl mb-4">🎬</div>
+                            <h3 class="text-xl font-semibold mb-4">Editing Video</h3>
+                            <p class="text-gray-300 mb-6">Menghasilkan konten video berkualitas tinggi dengan penyampaian inti sari video yang mudah dipahami dan juga kuat dan visual yang memukau.</p>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">Adobe Premiere</span>
+                                        <span class="text-sm">75%</span>
+                                    </div>
+                                    <div class="bg-gray-700 rounded-full h-2">
+                                        <div class="skill-bar" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">After Effects</span>
+                                        <span class="text-sm">87%</span>
+                                    </div>
+                                    <div class="bg-gray-700 rounded-full h-2">
+                                        <div class="skill-bar" style="width: 87%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">DaVinci Resolve</span>
+                                        <span class="text-sm">56%</span>
+                                    </div>
+                                    <div class="bg-gray-700 rounded-full h-2">
+                                        <div class="skill-bar" style="width: 56%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 card-hover">
+                            <div class="text-4xl mb-4">📱</div>
+                            <h3 class="text-xl font-semibold mb-4">Multimedia</h3>
+                            <p class="text-gray-300 mb-6">Mengoperasikan berbagai perangkat multimedia dan membawa perasaan dari dalam videoke dunia nyata dengan video ataupun gambar yang interaktif dan menarik.</p>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">OBS Studio</span>
+                                        <span class="text-sm">93%</span>
+                                    </div>
+                                    <div class="bg-gray-700 rounded-full h-2">
+                                        <div class="skill-bar" style="width: 93%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">Illustrator</span>
+                                        <span class="text-sm">65%</span>
+                                    </div>
+                                    <div class="bg-gray-700 rounded-full h-2">
+                                        <div class="skill-bar" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">vMix</span>
+                                        <span class="text-sm">68%</span>
+                                    </div>
+                                    <div class="bg-gray-700 rounded-full h-2">
+                                        <div class="skill-bar" style="width: 68%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Portfolio Page -->
+        <div id="portfolio" class="page hidden">
+            <section class="min-h-screen py-20 px-4">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Portofolio</h2>
+                        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                            Koleksi project saya yang sudah saya kerjakan dan jalani selama ini, project ini menunjukkan dedikasi dan kreativitas dalam setiap proyek
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-wrap justify-center gap-4 mb-12">
+                        <button onclick="filterPortfolio('all')" class="portfolio-filter active bg-blue-500 text-white px-6 py-2 rounded-full transition-all duration-300">Semua</button>
+                        <button onclick="filterPortfolio('web')" class="portfolio-filter bg-gray-800 hover:bg-gray-700 px-6 py-2 rounded-full transition-all duration-300">Desain Web</button>
+                        <button onclick="filterPortfolio('video')" class="portfolio-filter bg-gray-800 hover:bg-gray-700 px-6 py-2 rounded-full transition-all duration-300">Video</button>
+                        <button onclick="filterPortfolio('multimedia')" class="portfolio-filter bg-gray-800 hover:bg-gray-700 px-6 py-2 rounded-full transition-all duration-300">Multimedia</button>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="portfolio-item web bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-800 card-hover">
+                            <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                                <span class="text-2xl">🌐</span>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Website Game/Perusahaaan</h3>
+                                <p class="text-gray-300 mb-4">Platform website game/perusahaan yang modern dan juga interaktif dengan UX yang intuitif dan desain yang bersih.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">Designer</span>
+                                    <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs">Website</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-item video bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-800 card-hover">
+                            <div class="h-48 bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center">
+                                <span class="text-2xl">🎥</span>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Iklan Sekolah</h3>
+                                <p class="text-gray-300 mb-4">Video promosi Sekolah dengan sinematografi yang memukau dan penyampaian inti sari video yang langsung pada intinya.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-red-500/20 text-red-300 px-3 py-1 rounded-full text-xs">Premiere</span>
+                                    <span class="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-xs">After Effects</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-item multimedia bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-800 card-hover">
+                            <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                                <span class="text-2xl">🎨</span>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Operator Multimedia</h3>
+                                <p class="text-gray-300 mb-4">Menjadi jembatan kreatif antara ide kreatif dan juga produk multimedia yang nyata dengan desain yang simple tapi penuh makna.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs">OBS Studios</span>
+                                    <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">vMix</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-item video bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-800 card-hover">
+                            <div class="h-48 bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center">
+                                <span class="text-2xl">🎬</span>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Film Dokumenter</h3>
+                                <p class="text-gray-300 mb-4">Film dokumenter adalah suatu video yang bertujuan untuk mengdokumentasikan acara atau kegiatan yang sedang berlangsung</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full text-xs">DaVinci</span>
+                                    <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">After Effect</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Services Page -->
+        <div id="services" class="page hidden">
+            <section class="min-h-screen py-20 px-4">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Layanan</h2>
+                        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                            Solusi kreatif komprehensif untuk kebutuhan website ataupun video dan juga multimedia
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-gray-900/50 p-6 lg:p-8 rounded-2xl border border-gray-800 card-hover text-center">
+                            <div class="text-4xl lg:text-5xl mb-4 lg:mb-6">🎨</div>
+                            <h3 class="text-xl lg:text-2xl font-semibold mb-3 lg:mb-4">Desain & Pengembangan Web</h3>
+                            <p class="text-gray-300 mb-4 lg:mb-6 text-sm lg:text-base">Desain dan pengembangan website yang responsif, modern, simple, elegant, dan juga SEO-friendly.</p>
+                            <ul class="text-left space-y-2 mb-6 lg:mb-8 text-sm lg:text-base">
+                                <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Desain UI/UX</li>
+                                <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Desain Simple Tetapi Tetap Elegant</li>
+                                <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Pengembangan Frontend</li>
+                                <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Integrasi CMS</li>
+                            </ul>
+                            <button onclick="showPage('contact')" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                                Hubungi Saya
+                            </button>
+                        </div>
+                        
+                        <div class="bg-gray-900/50 p-6 lg:p-8 rounded-2xl border border-gray-800 card-hover text-center">
+                            <div class="text-4xl lg:text-5xl mb-4 lg:mb-6">🎬</div>
+                            <h3 class="text-xl lg:text-2xl font-semibold mb-3 lg:mb-4">Produksi & Editing Video</h3>
+                            <p class="text-gray-300 mb-4 lg:mb-6 text-sm lg:text-base">Produksi video berkualitas tinggi dari sekedar konsep hingga post-production.</p>
+                            <ul class="text-left space-y-2 mb-6 lg:mb-8 text-sm lg:text-base">
+                                <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Editing Video</li>
+                                <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Motion Graphics</li>
+                                <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Color Grading</li>
+                                <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Audio Mixing</li>
+                            </ul>
+                            <button onclick="showPage('contact')" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                                Hubungi Saya
+                            </button>
+                        </div>
+                        
+                        <div class="bg-gray-900/50 p-6 lg:p-8 rounded-2xl border border-gray-800 card-hover text-center">
+                            <div class="text-4xl lg:text-5xl mb-4 lg:mb-6">📱</div>
+                            <h3 class="text-xl lg:text-2xl font-semibold mb-3 lg:mb-4">Operator Multimedia</h3>
+                            <p class="text-gray-300 mb-4 lg:mb-6 text-sm lg:text-base">Solusi kebutuhan multimedia mu lengkap untuk slide ataupun animasi dan konten interaktif.</p>
+                            <ul class="text-left space-y-2 mb-6 lg:mb-8 text-sm lg:text-base">
+                                <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Presentasi Interaktif</li>
+                                <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Digital Signage</li>
+                                <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Visualisasi 3D</li>
+                                <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Animasi</li>
+                            </ul>
+                            <button onclick="showPage('contact')" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                                Hubungi Saya
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Experience Page -->
+        <div id="experience" class="page hidden">
+            <section class="min-h-screen py-20 px-4">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Pengalaman Saya</h2>
+                        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                            Perjalanan karir yang membangun keahlian dalam dunia kreatif dan teknologi
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 card-hover">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-semibold mb-2">Desainer Web</h3>
+                                    <p class="text-blue-400 font-medium">Kuro Games</p>
+                                </div>
+                                <div class="text-gray-400">2021 - 2024</div>
+                            </div>
+                            <p class="text-gray-300 mb-4">
+                                Bertanggung jawab dalam merancang dan mengembangkan antarmuka web untuk game dan platform digital. Berkolaborasi dengan tim pengembang untuk menciptakan pengalaman pengguna yang optimal dan menarik.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm">UI/UX Design</span>
+                                <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-sm">Frontend Development</span>
+                                <span class="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-sm">Game Interface</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 card-hover">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-semibold mb-2">Desainer Web</h3>
+                                    <p class="text-blue-400 font-medium">Kong Studios</p>
+                                </div>
+                                <div class="text-gray-400">2019 - 2020</div>
+                            </div>
+                            <p class="text-gray-300 mb-4">
+                                Mengembangkan desain web untuk berbagai proyek kreatif dan kampanye digital. Menangani seluruh proses desain dari konsep awal hingga implementasi final dengan fokus pada kreativitas dan inovasi.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-red-500/20 text-red-300 px-3 py-1 rounded-full text-sm">Creative Design</span>
+                                <span class="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-sm">Digital Campaigns</span>
+                                <span class="bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full text-xs">Responsive Web</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 card-hover">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-semibold mb-2">Desainer Web</h3>
+                                    <p class="text-blue-400 font-medium">Novaverse</p>
+                                </div>
+                                <div class="text-gray-400">2024 - 2025</div>
+                            </div>
+                            <p class="text-gray-300 mb-4">
+                                Memulai karir profesional sebagai desainer web dengan fokus pada pengembangan website modern dan interaktif. Belajar fundamental desain web dan teknologi terbaru dalam industri digital.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-teal-500/20 text-teal-300 px-3 py-1 rounded-full text-sm">Web Development</span>
+                                <span class="bg-orange-500/20 text-orange-300 px-3 py-1 rounded-full text-sm">Modern Design</span>
+                                <span class="bg-pink-500/20 text-pink-300 px-3 py-1 rounded-full text-sm">Interactive Web</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page hidden">
+            <section class="min-h-screen py-20 px-4">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Hubungi Saya</h2>
+                        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                            Mari berkolaborasi untuk mewujudkan ide kreatif Anda menjadi kenyataan
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="text-2xl font-semibold mb-6">Mari Berdiskusi</h3>
+                                <p class="text-gray-300 mb-8">
+                                    Saya siap membantu mewujudkan visi kreatif Anda. Hubungi saya untuk konsultasi gratis dan diskusi tentang proyek Anda.
+                                </p>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                        <span class="text-blue-400 text-xl">📧</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">Email</h4>
+                                        <p class="text-gray-300">himaricchxsleepyy@gmail.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+                                        <span class="text-green-400 text-xl">📱</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">WhatsApp</h4>
+                                        <p class="text-gray-300">+62 857 8465 2448</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                                        <span class="text-purple-400 text-xl">📍</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">Lokasi</h4>
+                                        <p class="text-gray-300">Kab. Mojokerto, Indonesia</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold mb-4">Ikuti Saya</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center hover:bg-blue-500/30 transition-colors">
+                                        <span class="text-blue-400">📘</span>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center hover:bg-pink-500/30 transition-colors">
+                                        <span class="text-pink-400">📷</span>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-blue-400/20 rounded-lg flex items-center justify-center hover:bg-blue-400/30 transition-colors">
+                                        <span class="text-blue-300">🐦</span>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center hover:bg-blue-600/30 transition-colors">
+                                        <span class="text-blue-500">💼</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800">
+                            <h3 class="text-2xl font-semibold mb-6">Kirim Pesan</h3>
+                            <form class="space-y-6" onsubmit="handleSubmit(event)">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Nama Lengkap</label>
+                                    <input type="text" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Email</label>
+                                    <input type="email" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Subjek</label>
+                                    <select class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors">
+                                        <option>Proyek Desain Web</option>
+                                        <option>Layanan Editing Video</option>
+                                        <option>Solusi Multimedia</option>
+                                        <option>Konsultasi</option>
+                                        <option>Lainnya</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Pesan</label>
+                                    <textarea rows="5" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors resize-none" placeholder="Ceritakan tentang proyek Anda..."></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                                    Kirim Pesan
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/50 border-t border-gray-800 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-gray-400">
+                © 2025 Portofolio Creative Designer. Dibuat dengan ❤️ untuk menginspirasi kreativitas.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.add('hidden'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.remove('hidden');
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Find and activate the correct nav link
+            const activeLink = document.querySelector(`[onclick="showPage('${pageId}')"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Trigger animations
+            setTimeout(() => {
+                const elements = document.querySelectorAll('.fade-in');
+                elements.forEach(el => el.classList.add('visible'));
+            }, 100);
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Portfolio Filter
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const filters = document.querySelectorAll('.portfolio-filter');
+            
+            // Update filter buttons
+            filters.forEach(filter => {
+                filter.classList.remove('active', 'bg-blue-500', 'text-white');
+                filter.classList.add('bg-gray-800', 'hover:bg-gray-700');
+            });
+            
+            event.target.classList.add('active', 'bg-blue-500', 'text-white');
+            event.target.classList.remove('bg-gray-800', 'hover:bg-gray-700');
+            
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Form Submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Terima kasih! Pesan Anda telah dikirim. Saya akan segera menghubungi Anda kembali.');
+            event.target.reset();
+        }
+
+        // Scroll Animations
+        function handleScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show home page by default
+            showPage('home');
+            
+            // Add scroll listener
+            window.addEventListener('scroll', handleScroll);
+            
+            // Initial scroll check
+            handleScroll();
+            
+            // Skill bars are now using inline styles and will display correctly
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'975cb33b013fb5e4',t:'MTc1NjMwOTU3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
